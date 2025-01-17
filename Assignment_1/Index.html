@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mystery & Escape Room Enthusiasts</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="favicon_io/site.webmanifest" />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to the Mystery & Escape Room Hub</h1>
+      <nav>
+        <ul>
+          <li><a href="#featured-rooms">Featured Rooms</a></li>
+          <li><a href="#puzzle-of-the-week">Puzzle of the Week</a></li>
+          <li><a href="#video-walkthroughs">Video Walkthroughs</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#trivia">Trivia</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="images">
+        <h2>The Escape Chronicles: Your Portal to Adventure</h2>
+        <article>
+          <figure>
+            <img
+              src="Images/Escape_room.jpg"
+              alt="Theme image of an escape room"
+            />
+            <figcaption>Mysteries Await – Will You Escape in Time?</figcaption>
+          </figure>
+          <p>
+            Enter a realm of intrigue and excitement! From the hardest escape
+            rooms to the trickiest puzzles, we've got everything you need to
+            fuel your love for mystery. Explore, book, and start your next
+            adventure now!
+          </p>
+          <button>Book Now</button>
+                
+        </article>
+      </section>
+      <section id="featured-rooms">
+        <h2>Featured Rooms</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Location</th>
+              <th>Difficulty Level</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Room of Secrets, NYC</td>
+              <td>Hard</td>
+              <td>4.8/5</td>
+            </tr>
+            <tr>
+              <td>Escape Dungeon, LA</td>
+              <td>Medium</td>
+              <td>4.5/5</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="puzzle-of-the-week">
+        <h2>Puzzle of the Week</h2>
+        <p>Can you guess the hidden word related to escape rooms? Unscramble the letters below!</p>
+        <div class="puzzle-container">
+            <p><strong>Scrambled Letters:</strong> R S T E A C E</p>
+            <button id="hint-button" onclick="displayHint()">Click for a hint</button>
+            <p id="hint-text" style="display:none;"></p>
+        </div>
+    </section>
+    
+    <script>
+        function displayHint() {
+            document.getElementById("hint-text").style.display = "block";
+            document.getElementById("hint-text").innerHTML = "Hint: This word is often associated with gaining access or moving forward during an escape challenge. Think about what helps you unlock doors or new stages in an adventure.";
+        }
+    </script>
+    
+
+      <section id="video-walkthroughs">
+        <h2>Video Walkthrough</h2>
+        <figure>
+          <video controls width="600">
+            <source src="Videos/EscapeRoom_IntroVideo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Escape Room Strategy Walkthrough</figcaption>
+        </figure>
+      </section>
+
+      <section id="audio-walkthrough">
+        <h2>Audio Walkthrough</h2>
+        <p>Listen to expert walkthroughs and tips for mastering escape rooms. Click play and start exploring strategies!</p>
+        <div class="audio-container">
+            <figure>
+                <figcaption>Room of Secrets Walkthrough:</figcaption>
+                <audio controls>
+                    <source src="Audio/Mystery_Escape_Walkthrough.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </figure>
+        </div>
+    </section>
+    
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+
+          <div>
+            <label for="booking">Room Booking:</label>
+            <input list="rooms" id="booking" name="booking" />
+            <datalist id="rooms">
+              <option value="Room of Secrets, NYC"></option>
+              <option value="Escape Dungeon, LA"></option>
+            </datalist>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
+      <section id="trivia">
+        <h2>Mystery Trivia</h2>
+        <aside>
+          <p>
+            Did you know? The first escape room was created in Japan in 2007!
+          </p>
+        </aside>
+      </section>
+
+      <footer>
+        <p>
+          Contact us at
+          <a href="mailto:info@mysteryescape.com">info@mysteryescape.com</a> or
+          call <a href="tel:+123456789">+1 234-567-89</a>
+        </p>
+        <p>&copy; 2025 Mystery Escape Room Enthusiasts</p>
+      </footer>
+    </main>
+  </body>
+</html>
