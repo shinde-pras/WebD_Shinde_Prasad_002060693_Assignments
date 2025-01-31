@@ -1,0 +1,36 @@
+body {
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+}
+
+h3{
+  margin-left: 60px;
+  color: #4CAF50; /* Green color to match the theme */
+}
+
+.socialmediaicons ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.socialmediaicons ul li {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.socialmediaicons ul li img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.socialmediaicons{
+	text-align: center;
+}
+
+#studentInfo {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4CAF50; /* Green color to match the theme */
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+ 
+<html>
+ 
+<head>
+    <title>Table CheckList</title>
+    <link rel="stylesheet" type="text/css" href="table.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+ 
+</head>
+ 
+<body>
+    <br>
+    <h3>Name: Prasad Shinde</h3>
+    <h3>NUID: 002060693</h3>
+    <br>
+ 
+    <table id="myTable">
+        <tr>
+            <th></th>
+            <th>STUDENT</th>
+            <th>ADVISOR</th>
+            <th>AWARD<br />STATUS</th>
+            <th>SEMESTER</th>
+            <th>TYPE</th>
+            <th>BUDGET<br />#</th>
+            <th>PERCENTAGE</th>
+            <th>DELETE</th>
+            <th>EDIT</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /><br /><br /><img onClick="rowTwo(this)" src="down.png" width="25px" /></td>
+            <td>Student 1</td>
+            <td>Teacher 1</td>
+            <td>Approved</td>
+            <td>Fall</td>
+            <td>TA</td>
+            <td>12345</td>
+            <td>100%</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="dropDownTextArea">
+            <td colspan="8">
+                Student 1 Deatils:<br><br>
+                Award Details: Honors Student<br>
+                Fall 1-2024(TA)<br />
+                Comments: Outstanding<br>
+                Award Status: A<br>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /><br /><br /><img onClick="rowTwo(this)" src="down.png" width="25px" /></td>
+            <td>Student 2</td>
+            <td>Teacher 2</td>
+            <td>Approved</td>
+            <td>Fall</td>
+            <td>TA</td>
+            <td>23456</td>
+            <td>100%</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="dropDownTextArea">
+            <td colspan="8">
+                Student 2 Deatils:<br><br>
+                Award Details: Honors Student<br>
+                Fall 1-2024(TA)<br />
+                Comments: Outstanding<br>
+                Award Status: A<br>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /><br /><br /><img onClick="rowTwo(this)" src="down.png" width="25px" /></td>
+            <td>Student 3</td>
+            <td>Teacher 3</td>
+            <td>Approved</td>
+            <td>Fall</td>
+            <td>TA</td>
+            <td>34567</td>
+            <td>100%</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="dropDownTextArea">
+            <td colspan="8">
+                Student 3 Deatils:<br><br>
+                Award Details: Honors Student<br>
+                Fall 1-2024(TA)<br />
+                Comments: Outstanding<br>
+                Award Status: A<br>
+            </td>
+        </tr>
+    </table>
+ 
+    <br /><br />
+ 
+    <button id="button" disabled>SUBMIT SELECTED AWARDS</button>
+    <button id="add" onClick="addRow()">Add New Student</button>
+ 
+    <script src="script.js"></script>
+ 
+</body>
+ 
+</html>
+ 
