@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Feedback</title>
+    <style>
+      label {
+        float: left;
+        width: 150px;
+      }
+      #container {
+        width: 700px;
+        margin: auto;
+        background-color: rgb(213, 218, 147);
+      }
+      main {
+        padding: 50px;
+      }
+
+      .dynamicCheckbox {
+        display: none;
+      }
+
+      .textReason {
+        display: none;
+      }
+      table {
+        width: 1300px;
+        margin: auto;
+        text-align: left;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid;
+      }
+
+      .table-header {
+        text-align: center;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <main>
+        <h2>Thank you for Visiting</h2>
+        <h3>Your Feedback is important to us!</h3>
+        <h4> Fields marked with an asterisk (*) are mandatory </h4>
+        <br /><br />
+        <form novalidate>
+          <label>Title*:</label>
+          <input
+            type="radio"
+            name="title"
+            id="miss"
+            value="miss"
+            required="required"
+          />Miss
+          <input
+            type="radio"
+            name="title"
+            id="mr"
+            value="mr"
+            required="required"
+          />Mr.
+          <input
+            type="radio"
+            name="title"
+            id="mrs"
+            value="mrs"
+            required="required"
+          />Mrs. <br /><br />
+          <label for="firstName">First Name*:</label>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            placeholder="First Name"
+            minlength="3"
+            maxlength="50"
+            required="required"
+          />
+          <br /><br />
+
+          <label for="lastName">Last Name*:</label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="Last Name"
+            minlength="3"
+            maxlength="50"
+            required="required"
+          />
+          <br /><br />
+
+          <label for="emailId">Email Id*:</label>
+          <input
+            type="text"
+            name="emailId"
+            id="emailId"
+            placeholder="yourname@domain.com"
+          />
+          <br /><br />
+
+          <label for="phoneNumber">Phone Number*:</label>
+          <input
+            type="text"
+            name="phoneNumber"
+            id="phoneNumber"
+            placeholder="xxx-xxx-xxxx"
+          />
+          <br /><br />
+
+          <label for="streetAddress1">Street Address 1*:</label>
+          <input
+            type="text"
+            name="streetAddress1"
+            id="streetAddress1"
+            placeholder="address"
+          />
+          <br /><br />
+
+          <label for="streetAddress2">Street Address 2:</label>
+          <input
+            type="text"
+            name="streetAddress2"
+            id="streetAddress2"
+            placeholder="address"
+          />
+          <br /><br />
+
+          <label for="city">City*:</label>
+          <input type="text" name="city" id="city" placeholder="city" />
+          <br /><br />
+
+          <label for="state">State*:</label>
+          <input type="text" name="state" id="state" placeholder="state" />
+          <br /><br />
+
+          <label for="zipcode">ZipCode*:</label>
+          <input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" />
+          <br /><br />
+
+          <label for="zipcode">How did you hear*:</label>
+          <input id="source" type="checkbox" name="source" value="facebook" />
+          Facebook
+          <input id="source" type="checkbox" name="source" value="google" />
+          Google
+          <input id="source" type="checkbox" name="source" value="yelp" /> Yelp
+          <br /><br />
+
+          <label for="comments">Comments*:</label>
+          <textarea
+            name="text"
+            id="comments"
+            placeholder="Your comments"
+            rows="5"
+            cols="25"
+          ></textarea>
+          <br /><br />
+
+          <label for="rating">Rating*:</label>
+          <select name="rating" id="rating">
+            <option value="select">Select Rating</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+          <br /><br />
+
+          <!-- Checkbox block -->
+          <div id="dynamicCheckbox" class="dynamicCheckbox"><br /><br /></div>
+
+          <!-- End Block -->
+
+          <!-- Text Field block -->
+          <div id="textReason" class="textReason">
+            <br />
+            <label for="ratingComment">More Feedback*: </label>
+            <textarea
+              name="ratingComment"
+              id="ratingComment"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <br /><br />
+          </div>
+          <!-- End Block -->
+
+          <input type="Submit" id="submitBtn" disabled> 
+          <input type="Reset" />
+          <br /><br />
+        </form>
+      </main>
+    </div>
+
+    <br /><br /><br /><br />
+    <br />
+    <br />
+    <br /><br />
+    <br />
+    <br />
+
+    <div class="table-container">
+      <h2 class="table-header">Feedback Data:</h2>
+      <br /><br />
+      <table id="tableData">
+        <tr>
+          <th>Name</th>
+          <th>Email ID</th>
+          <th>Phone Number</th>
+          <th>Street Address 1</th>
+          <th>Street Address 2</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip Code</th>
+          <th>Source</th>
+          <th>Comments</th>
+          <th>Rating Selected</th>
+          <th>Rating Comment</th>
+        </tr>
+        <tr>
+          <td>Miss Riya Patel</td>
+          <td>patel.r@northeastern.edu</td>
+          <td>8573324567</td>
+          <td>199 Amory Street</td>
+          <td>Apartment 5</td>
+          <td>Boston</td>
+          <td>MA</td>
+          <td>02133</td>
+          <td>Facebook, Google</td>
+          <td>Best place to live</td>
+          <td>5</td>
+          <td>Great Place</td>
+        </tr>
+      </table>
+      <br /><br /><br />
+    </div>
+
+    <script src="./script.js" />
+  </body>
+</html>
