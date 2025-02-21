@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="form-page">
+        <h2>Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Northeastern Email:</label>
+                <input type="email" id="email" required>
+                <div class="error" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <div class="error" id="username-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <div class="error" id="password-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" required>
+                <div class="error" id="confirm-password-error"></div>
+            </div>
+
+            <button type="button" id="login-button" disabled>Login</button>
+        </form>
+    </div>
+
+    <!-- Calculator Page -->
+    <div id="calculator-page" class="form-page" style="display: none;">
+        <div id="username-display"></div>
+        <h2>Calculator</h2>
+        <form id="calculator-form">
+            <div class="form-group">
+                <label for="num1">Number 1:</label>
+                <input type="text" id="num1" required>
+                <div class="error" id="num1-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="num2">Number 2:</label>
+                <input type="text" id="num2" required>
+                <div class="error" id="num2-error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="result">Result:</label>
+                <input type="text" id="result" readonly>
+            </div>
+
+            <div class="calculator-operations">
+                <button type="button" class="operation-button" data-op="add">Add</button>
+                <button type="button" class="operation-button" data-op="subtract">Subtract</button>
+                <button type="button" class="operation-button" data-op="multiply">Multiply</button>
+                <button type="button" class="operation-button" data-op="divide">Divide</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
