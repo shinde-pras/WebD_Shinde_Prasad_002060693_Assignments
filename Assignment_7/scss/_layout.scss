@@ -1,0 +1,97 @@
+header {
+    background-color: $primary-color;
+    color: $secondary-color;
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    @include flex-center;
+    list-style: none;
+    padding: 0;
+    li {
+        margin: 0 15px;
+        a {
+            color: $secondary-color;
+            text-decoration: none;
+        }
+    }
+}
+
+.hero {
+    @include flex-center;
+    flex-direction: column;
+    padding: 50px;
+    background: url('/images/ecobg.png') center/cover no-repeat;
+    color: white;
+    opacity: 0.9;
+}
+
+.hero h3{
+    font: 400 1.2em 'Roboto', sans-serif;
+}
+
+.hero p{
+    font: 400 1em 'Roboto', sans-serif;
+}
+
+.hero button{
+    background-color: white;
+    color: green;
+    border: none;
+    padding: 10px 20px;
+    font: 400 1em 'Roboto', sans-serif;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+// CSS Grid Layout
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item {
+    @extend %box-style;
+}
+
+.grid-item p{
+    font: 400 1em 'Roboto', sans-serif;
+}
+
+// Flexbox Layout
+.tips-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.tip {
+    @extend %box-style;
+    flex: 1 1 200px;
+}
+
+.grid-item img {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.tip img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.logo {
+    width:70px; 
+    height: auto; 
+    display: block;
+    margin: 0 auto;
+}

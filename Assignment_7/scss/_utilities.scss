@@ -1,0 +1,19 @@
+// SASS Function
+@function spacing($value) {
+    @return $value * 8px;
+}
+
+// Using Interpolation
+$size: 12;
+.text-size-#{$size} {
+    font-size: #{$size}px;
+}
+
+// Utility Classes
+.margin-small {
+    margin: spacing(1);
+}
+
+.margin-large {
+    margin: spacing(3);
+}
