@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Space</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/android-chrome-512x512.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/Home.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand glow-effect" href="#">Space Tourism</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active glow-link" href="#">Home</a>
+          <a class="nav-link glow-link" href="#mission">Mission</a>
+          <a class="nav-link glow-link" href="#carousel-section">Gallery</a>
+          <a class="nav-link glow-link" href="#contact">Contact</a>
+          <span id="authButtonContainer"></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <img src="images/moon1.png" alt="Moon" id="moon" class="object">
+    <img src="images/astronaut.png" alt="Astronaut" id="astronaut" class="object">
+    <h1 id="welcomeText">Welcome To Your Space Journey!</h1>
+  </section>
+
+  <section id="mission">
+    <div class="video-background">
+      <video autoplay loop muted playsinline>
+        <source src="./Video/Mission.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="mission-content">
+      <div class="mission-text">
+        <h2 class="mission-heading">Our Mission</h2>
+        <p>Our mission is to revolutionize space tourism by combining cutting‐edge technology, luxurious comfort, and
+          unparalleled adventure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="carousel-section">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/solar system.jpg" class="d-block w-100" alt="Explore Planets">
+          <div class="carousel-caption">
+            <h5>Explore Different Planets</h5>
+            <p>Choose from a variety of planets for your space journey! Mars, Titan, Europa, and more.</p>
+            <button class="carousel-btn show-toast">Learn More</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/spacecraft.jpeg" class="d-block w-100" alt="Crew Capsule Tour">
+          <div class="carousel-caption">
+            <h5>Take a Tour of the Crew Capsule</h5>
+            <p>Experience the luxury and safety of our spacecraft, designed for your comfort.</p>
+            <button class="carousel-btn show-toast">Learn More</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="images/crew.jpg" class="d-block w-100" alt="Train with the Crew">
+          <div class="carousel-caption">
+            <h5>Train with Experienced Astronauts</h5>
+            <p>Get hands-on training and experience what it takes to be an astronaut.</p>
+            <button class="carousel-btn show-toast">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Contact Us</h2>
+      <p class="text-center text-light">Have questions or want to learn more? Reach out to us!</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="card shadow-sm p-4">
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="contactName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="contactName" placeholder="Enter your name" required>
+              </div>
+              <div class="mb-3">
+                <label for="contactEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="contactEmail" placeholder="Enter your email" required>
+              </div>
+              <div class="mb-3">
+                <label for="contactSubject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="contactSubject" placeholder="Enter subject" required>
+              </div>
+              <div class="mb-3">
+                <label for="contactMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="contactMessage" rows="4" placeholder="Your message"
+                  required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <img src="Images/calling.jpg" class="rounded me-2 toast-icon" alt="Contact Icon">
+          <strong class="me-auto">Space Tourism Support</strong>
+          <small>Just now</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          <p>🌌 <strong>Contact Mission Support</strong></p>
+          <p><strong>Email:</strong> <a href="mailto:support@spacetourism.com">support@spacetourism.com</a></p>
+          <p><strong>Live Chat:</strong> <a href="#contact">Click Here</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-light custom-footer">
+    <div class="container">
+      <div class="row text-center justify-content-center">
+        <div class="col-md-4 mb-3">
+          <h5>About Space Tourism</h5>
+          <p>Embark on an unforgettable journey through space with us. Explore planets, train like astronauts, and
+            experience luxury in our spacecraft.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#hero" class="text-light text-decoration-none">Home</a></li>
+            <li><a href="#mission" class="text-light text-decoration-none">Mission</a></li>
+            <li><a href="#carousel-section" class="text-light text-decoration-none">Gallery</a></li>
+            <li><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Follow Us</h5>
+          <div class="d-flex justify-content-center">
+            <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <p>&copy; 2025 Space Tourism. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <button id="backToTop" class="btn btn-primary">↑</button>
+
+  <script src="./Js/Home.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

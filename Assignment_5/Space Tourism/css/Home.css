@@ -1,0 +1,586 @@
+@font-face {
+  font-family: 'GT Flexa';
+  src: url('fonts/GT-Flexa-Regular.woff2') format('woff2'),
+       url('fonts/GT-Flexa-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+body{
+  background-color: black;
+}
+.navbar-custom {
+    background-color: rgba(0, 0, 0,0.6);
+    font-size: 18px;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.navbar-custom .navbar-nav{
+  gap: 20px;
+  font-size: 20px;
+}
+
+/* Style for navigation links */
+.navbar-nav .nav-link {
+  font-size: 1.rem; /* Default font size */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-link:hover {
+  font-size: 1.2rem; /* Increase font size on hover */
+  text-decoration: underline; /* Add underline on hover */
+  color: #007bff; /* Optional: Change text color on hover */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+#hero{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+    background: #000 url('../Images/stars.png') no-repeat center center/cover;
+}
+
+
+.object {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+#moon {
+    width: 2500px;
+    height: 750px;
+    bottom: 10%;
+    filter: drop-shadow(0 0 30px #fff);
+    opacity: 1;
+    margin-bottom: 0px;
+}
+#astronaut {
+    width: 15vw;
+    top: 25%;
+}
+#welcomeText {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+    /* filter: drop-shadow(0 0 30px #fff); */
+    font-family: 'GT Flexa', sans-serif;
+    white-space: nowrap; 
+    font-size: 5rem;
+    color: rgb(83, 7, 7);
+    -webkit-text-stroke: 2px darkred; 
+    text-shadow: none;
+    opacity: 1000;
+    animation: glow 1.5s ease-in-out infinite alternate; 
+    
+}
+
+
+body {
+    background:#000;
+}
+
+.btn-login{
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 10px;
+    width: 100%;
+    height: 40px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #007bff;
+    text-decoration: none;
+}
+
+.btn-login:hover {
+  background: #0056b3;
+  color: black;
+  box-shadow: 0px 0px 10px cyan;
+}
+
+#mission {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 1);
+  background: none;
+  padding: 150px 0;
+  margin-top: 100px; 
+  
+}
+
+
+#mission::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: -2;
+}
+
+#mission .video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: transparent;
+  opacity: 0.5;
+}
+
+#mission .video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;      
+  display: block;   
+  background: transparent;
+}
+
+#mission .mission-content {
+  position: relative;
+  z-index: 1;
+  padding: 100px 20px; 
+}
+
+#mission .mission-text h2 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+#mission .mission-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mission-heading {
+  background: linear-gradient(90deg, #ff0066, #ffcc00, #33ccff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 3s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#carousel-section {
+  padding: 100px 0;
+  background: black; 
+}
+
+.carousel-item img {
+  height: 500px; 
+  object-fit:contain;
+  border-radius: 10px; 
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.6); 
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.carousel-caption h5 {
+  font-size: 2rem;
+  color: cyan;
+  text-shadow: 0px 0px 10px cyan;
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.carousel-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: cyan;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.carousel-btn:hover {
+  background: white;
+  color: black;
+  box-shadow: 0px 0px 10px cyan;
+}
+
+/* Contact Section with Dark Space Theme */
+#contact {
+  background: url('../Images/contactbg.jpg ') no-repeat center center/cover; /* Space-themed background */
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+}
+
+/* Dark Overlay for Better Readability */
+#contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+/* Content Wrapper */
+#contact .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Title */
+#contact h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+  margin-bottom: 15px;
+}
+
+/* Subtitle */
+#contact p {
+  font-size: 1.2rem;
+  font-size: 20px;
+  color: red;
+  margin-bottom: 40px;
+} 
+
+/* Form Card */
+#contact .card {
+  border: none;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Input Fields */
+#contactForm .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(0, 255, 255, 0.6);
+  border-radius: 8px;
+  transition: 0.3s;
+  padding: 12px;
+}
+
+#contactForm .form-label {
+  color: #fff;
+  font-size: 1.0rem;
+}
+
+/* Input Placeholder */
+#contactForm .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus Effect */
+#contactForm .form-control:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Submit Button */
+#contactForm button {
+  background: linear-gradient(90deg, #00ffff, #007bff);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+#contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+/* Button Hover */
+#contactForm button:hover {
+  background: linear-gradient(90deg, #007bff, #00ffff);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+/* Mobile Responsiveness */
+/* @media (max-width: 768px) {
+  #contact h2 {
+      font-size: 2rem;
+  }
+  #contact p {
+      font-size: 1rem;
+  }
+  #contact .card {
+      padding: 20px;
+  }
+} */
+/* Toast Container */
+.toast-container {
+  z-index: 1050;
+}
+
+/* Toast Box */
+.toast {
+  background: white;  
+  color: black; 
+  border: 2px solid #00ffff;  
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  width: 320px;
+}
+
+/* Toast Header */
+.toast-header {
+  background: #005f99;  
+  color: white;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+/* Toast Close Button */
+.toast-header .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+/* Toast Icon */
+.toast-icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+}
+
+/* Toast Body */
+.toast-body {
+  font-size: 0.95rem;  
+  padding: 12px;
+  line-height: 1.5;
+  color: black;  
+}
+
+/* Contact Info Styling */
+.toast-body p {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: black;  
+}
+
+/* Strong Text */
+.toast-body strong {
+  color: #020f1f;  
+  font-size: 0.95rem;
+}
+
+/* Links */
+.toast-body a {
+  color: #020f1f;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.toast-body a:hover {
+  text-decoration: underline;
+  color: #0099cc;
+}
+/* Progress Bar Section */
+#progress-section {
+  padding: 30px 0;
+  background: #000; /* Dark background for contrast */
+  color: #fff;
+}
+
+/* Title */
+.progress-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #00ffff; /* Cyan text */
+}
+
+/* Progress Bar and Button Layout */
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* Space between progress bar and button */
+  width: 60%;
+  margin: 0 auto;
+}
+
+/* Progress Bar */
+.progress-container {
+  flex-grow: 1; /* Make it responsive */
+}
+
+.progress {
+  height: 25px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #00ffff;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #007bff, #00ffff);
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Enroll Button */
+#enroll-btn {
+  background: #28a745;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+}
+
+#enroll-btn:hover {
+  background: #218838;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.8);
+}
+
+#backToTop {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-size: 20px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+  margin-bottom: 80px;
+  margin-right: 0px;
+}
+
+#backToTop:hover {
+  background-color: #0056b3;
+}
+
+.custom-footer {
+  padding-top: 1rem !important;
+  padding-bottom: 0px !important; /* Override everything */
+  margin-bottom: 0px !important; /* Double check, just in case */
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  right: 0; /* Adjust as needed */
+  transform: translateX(-3px);
+  transform: translateY(100px);
+  z-index: 5;
+}
+
+@media (max-width: 1200px) {
+  #moon {
+    width: 2000px;
+    height: 600px;
+  }
+  #astronaut {
+    width: 18vw;
+  }
+  #welcomeText {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 992px) {
+  #moon {
+    width: 1500px;
+    height: auto;
+  }
+  #astronaut {
+    width: 20vw;
+  }
+  #welcomeText {
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 768px) {
+  #moon {
+    width: 1200px;
+  }
+  #astronaut {
+    width: 25vw;
+  }
+  #welcomeText {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 576px) {
+  #moon {
+    width: 1000px;
+  }
+  #astronaut {
+    width: 30vw;
+  }
+  #welcomeText {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  #hero {
+    margin-top: -80px;
+  }
+  body {
+    padding-top: 6px; /* Adjust accordingly so content isn't pushed too far down */
+  }
+}
