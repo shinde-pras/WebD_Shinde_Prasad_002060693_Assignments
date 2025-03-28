@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif; /* Elegant serif font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+}
+
+
+
+.dancing-script{
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
