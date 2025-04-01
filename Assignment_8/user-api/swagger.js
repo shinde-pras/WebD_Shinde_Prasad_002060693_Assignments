@@ -1,30 +1,33 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-// Swagger Definition
-const options = {
+// Swagger configuration options
+const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'User Management API',
+            title: 'User API Documentation',
             version: '1.0.0',
-            description: 'API for managing users with authentication, CRUD operations, and image uploads',
+            description: 'API for managing users with CRUD operations, authentication, and image uploads.',
+            contact: {
+                name: 'Developer',
+                email: 'developer@example.com'
+            }
         },
         servers: [
             {
-                url: 'http://localhost:3000',
-                description: 'Local server',
+                url: 'http://localhost:3000/api', // Base URL of the API
+                description: 'Development Server'
             }
-        ],
+        ]
     },
-    apis: ['./routes/*.js'], // Path to your route files
+    apis: ['./routes/userRoutes.js'] // Path to the route files containing Swagger annotations
 };
 
-// Initialize Swagger
-const swaggerSpec = swaggerJsdoc(options);
+// Generate Swagger documentation
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-const swaggerDocs = (app) => {
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Export a function to set up Swagger UI
+module.exports = (app) => {
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 };
-
-module.exports = swaggerDocs;

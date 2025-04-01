@@ -1,0 +1,124 @@
+:root {
+  --main-bg-color: #f4f4f4;
+  --text-color: #333;
+}
+
+.tip, .grid-item {
+  border: 1px solid #2E8B57;
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+header {
+  background-color: #2E8B57;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+nav ul li {
+  margin: 0 15px;
+}
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  background: url("/images/ecobg.png") center/cover no-repeat;
+  color: white;
+  opacity: 0.9;
+}
+
+.hero h3 {
+  font: 400 1.2em "Roboto", sans-serif;
+}
+
+.hero p {
+  font: 400 1em "Roboto", sans-serif;
+}
+
+.hero button {
+  background-color: white;
+  color: green;
+  border: none;
+  padding: 10px 20px;
+  font: 400 1em "Roboto", sans-serif;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.grid-item p {
+  font: 400 1em "Roboto", sans-serif;
+}
+
+.tips-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.tip {
+  flex: 1 1 200px;
+}
+
+.grid-item img {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.tip img {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.logo {
+  width: 70px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+footer {
+  background-color: #2E8B57;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+}
+
+.text-size-12 {
+  font-size: 12px;
+}
+
+.margin-small {
+  margin: 8px;
+}
+
+.margin-large {
+  margin: 24px;
+}/*# sourceMappingURL=main.css.map */
