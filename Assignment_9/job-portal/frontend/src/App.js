@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -23,6 +24,11 @@ import DashCategory from './pages/admin/DashCategory';
 import DashCreateJob from './pages/admin/DashCreateJob';
 import DashCreateCategory from './pages/admin/DashCreateCategory';
 import DashEditJob from './pages/admin/DashEditJob';
+import Navbar from './component/Navbar'; // Import Navbar
+import About from './pages/About'; // Import About page
+import JobListings from './pages/JobListings'; // Import Job Listings page
+import Contact from './pages/Contact'; // Import Contact page
+import CompanyShowcase from './pages/CompanyShowcase'; // Import Company Showcase page 
 
 
 import { createTheme } from '@mui/material/styles';
@@ -57,6 +63,7 @@ const App = () => {
                 <CssBaseline />
                 <ProSidebarProvider>
                     <BrowserRouter>
+                    <Navbar />
                         <Routes>
                             <Route path='/' element={<Home />} />
                             <Route path='/search/location/:location' element={<Home />} />
@@ -75,6 +82,11 @@ const App = () => {
                             <Route path='/user/jobs' element={<UserRoute>< UserJobsHistoryHOC /></UserRoute>} />
                             <Route path='/user/info' element={<UserRoute>< UserInfoDashboardHOC /></UserRoute>} />
                             <Route path='*' element={<NotFound />} />
+                            <Route path="/" element={<Home />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/job-listings" element={<JobListings />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/company-showcase" element={<CompanyShowcase />} />
                         </Routes>
                     </BrowserRouter>
                 </ProSidebarProvider>

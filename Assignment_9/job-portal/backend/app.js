@@ -10,13 +10,6 @@ const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/error");
 
 require('dotenv').config({ path: __dirname + '/.env' });
-// Database connection
-mongoose.connect(process.env.DATABASE, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
 
 // Middleware
 if (process.env.NODE_ENV === 'development') {
@@ -27,16 +20,27 @@ app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
+// Connect to MongoDB
+mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB Connected'))
+.catch((err) => console.error('MongoDB Connection Error:', err));
+
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const jobTypeRoute = require('./routes/jobsTypeRoutes');
 const jobRoute = require('./routes/jobsRoutes');
+const companyRoutes = require('./routes/companyRoutes');
 
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', jobTypeRoute);
 app.use('/api', jobRoute);
+app.use('/api', companyRoutes);
+app.use('/uploads', express.static('uploads'));
 
 // Serve static files
 if (process.env.NODE_ENV === 'production') {

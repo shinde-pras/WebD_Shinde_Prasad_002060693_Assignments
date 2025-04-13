@@ -5,7 +5,17 @@ const JobModel = require("../models/jobSchema");
 // POST /api/create/job
 router.post("/create/job", async (req, res) => {
   try {
-    const { companyName, jobTitle, description, salary } = req.body;
+    console.log("Raw request body:", req.body); // 👈 Check if body is parsed
+
+    let { companyName, jobTitle, description, salary } = req.body;
+
+    console.log("Before conversion - salary:", salary, typeof salary);
+    salary = Number(salary);
+    console.log("After conversion - salary:", salary, typeof salary);
+
+    if (!companyName || !jobTitle || !description || isNaN(salary)) {
+      return res.status(400).json({ message: "All fields are required and salary must be a number" });
+    }
 
     const newJob = new JobModel({ companyName, jobTitle, description, salary });
     await newJob.save();

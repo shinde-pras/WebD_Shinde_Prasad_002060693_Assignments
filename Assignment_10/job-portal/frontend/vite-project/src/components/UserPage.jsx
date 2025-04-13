@@ -10,11 +10,13 @@ import {
   Paper,
   Typography,
   Box,
+  CircularProgress,
 } from "@mui/material";
 import AdminSidebar from "../components/AdminSidebar";
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,6 +25,8 @@ const UsersPage = () => {
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -30,36 +34,62 @@ const UsersPage = () => {
   }, []);
 
   return (
-    <Box sx={{ display: "flex", minHeight: "100vh", backgroundColor: "#f9f9f9" }}>
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "100vh",
+        backgroundColor: "#f4f4f4",
+      }}
+    >
       {/* Sidebar */}
       <AdminSidebar />
 
       {/* Main Content */}
       <Box sx={{ flex: 1, padding: 4 }}>
-        <Typography variant="h4" sx={{ mb: 3, color: "#0caa41" }}>
+        <Typography
+          variant="h4"
+          sx={{
+            mb: 3,
+            fontWeight: "bold",
+            color: "#1b5e20",
+          }}
+        >
           Users Management
         </Typography>
 
-        <TableContainer component={Paper} elevation={3}>
-          <Table>
-            <TableHead sx={{ backgroundColor: "#0caa41" }}>
-              <TableRow>
-                <TableCell sx={{ color: "white" }}>Full Name</TableCell>
-                <TableCell sx={{ color: "white" }}>Email</TableCell>
-                <TableCell sx={{ color: "white" }}>User Type</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {users.map((user) => (
-                <TableRow key={user._id}>
-                  <TableCell>{user.fullName}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.type}</TableCell>
+        {loading ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "60vh",
+            }}
+          >
+            <CircularProgress color="success" />
+          </Box>
+        ) : (
+          <TableContainer component={Paper} elevation={4} sx={{ borderRadius: 2 }}>
+            <Table>
+              <TableHead sx={{ backgroundColor: "#1b5e20" }}>
+                <TableRow>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Full Name</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Email</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>User Type</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {users.map((user) => (
+                  <TableRow key={user._id}>
+                    <TableCell>{user.fullName}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell sx={{ textTransform: "capitalize" }}>{user.type}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
       </Box>
     </Box>
   );

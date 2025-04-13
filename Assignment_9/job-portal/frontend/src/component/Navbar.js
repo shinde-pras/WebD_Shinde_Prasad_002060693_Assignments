@@ -19,12 +19,10 @@ import { userLogoutAction } from '../redux/actions/userAction';
 import { DarkMode, LightMode } from "@mui/icons-material";
 import { toggleActionTheme } from '../redux/actions/themeAction';
 
-
-const pages = ['Home', 'Log In'];
-
+const pages = [ 'Job Listings', 'Company Showcase', 'Contact', 'About'];
 
 const Navbar = () => {
-    //show / hide button
+    // Show / hide button
     const { userInfo } = useSelector(state => state.signIn);
 
     const dispatch = useDispatch();
@@ -48,21 +46,19 @@ const Navbar = () => {
         setAnchorElUser(null);
     };
 
-    // log out user
+    // Log out user
     const logOutUser = () => {
         dispatch(userLogoutAction());
         window.location.reload(true);
         setTimeout(() => {
             navigate('/');
-        }, 500)
-    }
-
-
+        }, 500);
+    };
 
     return (
         <AppBar position="static" sx={{ bgcolor: palette.primary.main }}>
-            <Container >
-                {/* principal Menu */}
+            <Container>
+                {/* Principal Menu */}
                 <Toolbar disableGutters>
                     <WorkIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
@@ -114,7 +110,11 @@ const Navbar = () => {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                    <Typography textAlign="center">
+                                        <Link to={`/${page.toLowerCase().replace(' ', '-')}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                            {page}
+                                        </Link>
+                                    </Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -139,24 +139,18 @@ const Navbar = () => {
                         JOB PORTAL
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {/* menu desktop */}
-
-                        <Button
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}>
-                            <Link to="/" style={{ color: 'white', textDecoration: "none" }}>
-                                Home
-                            </Link>
-                        </Button>
-                        <Button
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}>
-                            <Link to="/register" style={{ color: 'white', textDecoration: "none" }}>
-                                Register
-                            </Link>
-                        </Button>
-
-
+                        {/* Menu Desktop */}
+                        {pages.map((page) => (
+                            <Button
+                                key={page}
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                <Link to={`/${page.toLowerCase().replace(' ', '-')}`} style={{ color: "white", textDecoration: "none" }}>
+                                    {page}
+                                </Link>
+                            </Button>
+                        ))}
                     </Box>
                     <IconButton sx={{ mr: 4 }} onClick={() => dispatch(toggleActionTheme())}>
                         {palette.mode === "dark" ? (
@@ -175,13 +169,12 @@ const Navbar = () => {
                         <Menu
                             PaperProps={{
                                 sx: {
-                                    "& 	.MuiMenu-list": {
+                                    "& .MuiMenu-list": {
                                         bgcolor: "primary.white",
-                                        color: "white"
+                                        color: "white",
                                     },
-                                }
+                                },
                             }}
-
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
                             anchorEl={anchorElUser}
@@ -197,33 +190,34 @@ const Navbar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-
-
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/admin/dashboard">Admin Dashboard</Link></Typography>
+                                <Typography textAlign="center">
+                                    <Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/admin/dashboard">Admin Dashboard</Link>
+                                </Typography>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/user/dashboard">User Dashboard</Link></Typography>
+                                <Typography textAlign="center">
+                                    <Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/user/dashboard">User Dashboard</Link>
+                                </Typography>
                             </MenuItem>
 
-                            {
-                                !userInfo ?
-
-                                    <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/login">Log In</Link></Typography>
-                                    </MenuItem> :
-
-                                    <MenuItem onClick={logOutUser}>
-                                        <Typography style={{ textDecoration: "none", color: palette.secondary.main }} textAlign="center">Log Out</Typography>
-                                    </MenuItem>
-                            }
-
-
+                            {!userInfo ? (
+                                <MenuItem onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">
+                                        <Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/login">Log In</Link>
+                                    </Typography>
+                                </MenuItem>
+                            ) : (
+                                <MenuItem onClick={logOutUser}>
+                                    <Typography style={{ textDecoration: "none", color: palette.secondary.main }} textAlign="center">Log Out</Typography>
+                                </MenuItem>
+                            )}
                         </Menu>
                     </Box>
                 </Toolbar>
             </Container>
         </AppBar>
     );
-}
+};
+
 export default Navbar;

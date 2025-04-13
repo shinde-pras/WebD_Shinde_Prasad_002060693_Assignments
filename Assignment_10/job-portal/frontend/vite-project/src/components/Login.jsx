@@ -7,102 +7,109 @@ import {
   Typography,
   TextField,
   Button,
-  Grid
+  Box,
+  CircularProgress,
 } from "@mui/material";
-import { green } from "@mui/material/colors";
 import axios from "axios";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 
 const Login = ({ loginSuccess }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    setLoading(true);
+    setError("");
     try {
-      const response = await axios.post("/api/user/login", {
-        email,
-        password,
-      });
-
-      console.log("LOGIN RESPONSE FULL:", response);
-
+      const response = await axios.post("/api/user/login", { email, password });
       const { token, user } = response.data;
 
-      if (!token || !user) {
-        console.error("Missing token or user in response");
-        setError("Login failed: Missing token or user.");
-        return;
-      }
-
-      const { email: userEmail, type } = user;
-
       localStorage.setItem("token", token);
-      loginSuccess({ email: userEmail, type, token });
+      loginSuccess({ email: user.email, type: user.type, token });
 
-      if (type === "admin") {
-        navigate("/admin");
-      } else {
-        navigate("/home");
-        alert("Login Successful!");
-      }
-    } catch (error) {
-      console.error("Login Error:", error);
-      setError(error.response?.data?.error || "Login failed");
+      setLoading(false);
+      sessionStorage.setItem("cameFromRedirect", "true");
+      navigate("/dashboard-redirect");
+    } catch (err) {
+      setLoading(false);
+      setError(
+        err?.response?.data?.message || err?.response?.data?.error || "Login failed"
+      );
     }
   };
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      style={{ height: "100vh" }}
+    <Box
+      sx={{
+        backgroundImage: "url('https://w0.peakpx.com/wallpaper/381/584/HD-wallpaper-curves-green-abstract-pattern-background.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        px: 2,
+      }}
     >
-      <Grid item xs={12} sm={8} md={6} lg={4}>
-        <Paper elevation={3} sx={{ padding: 3, borderRadius: 2 }}>
-          <Typography variant="h5" gutterBottom>
-            Login
+      <Paper elevation={6} sx={{ p: 4, maxWidth: 400, width: "100%", borderRadius: 3 }}>
+        {/* Logo + Title */}
+        <Box sx={{ textAlign: "center", mb: 3 }}>
+          <WorkOutlineIcon sx={{ fontSize: 50, color: "#2e7d32" }} />
+          <Typography variant="h5" fontWeight="bold" color="primary" sx={{ mt: 1 }}>
+            Job Portal
           </Typography>
-          {error && (
-            <Typography variant="body2" sx={{ color: "red", marginBottom: 2 }}>
-              {error}
-            </Typography>
-          )}
-          <TextField
-            fullWidth
-            label="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            variant="outlined"
-            margin="dense"
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            variant="outlined"
-            margin="normal"
-          />
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={handleLogin}
-            sx={{
-              marginTop: 2,
-              backgroundColor: green[500],
-              "&:hover": { backgroundColor: green[700] },
-            }}
-          >
-            Login
-          </Button>
-        </Paper>
-      </Grid>
-    </Grid>
+        </Box>
+
+        <Typography variant="h6" align="center" gutterBottom>
+          Login
+        </Typography>
+
+        {error && (
+          <Typography variant="body2" color="error" align="center" gutterBottom>
+            {error}
+          </Typography>
+        )}
+
+        <TextField
+          label="Email"
+          type="email"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          label="Password"
+          type="password"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button
+          fullWidth
+          variant="contained"
+          sx={{ mt: 2, backgroundColor: "#2e7d32" }}
+          onClick={handleLogin}
+          disabled={loading}
+        >
+          {loading ? <CircularProgress size={24} color="inherit" /> : "LOGIN"}
+        </Button>
+        <Typography
+          variant="body2"
+          align="center"
+          sx={{ mt: 2, cursor: "pointer", color: "primary.main" }}
+          onClick={() => navigate("/signup")}
+        >
+          Don’t have an account? Sign up here
+        </Typography>
+      </Paper>
+    </Box>
   );
 };
 

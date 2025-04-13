@@ -23,7 +23,7 @@ const ContactPage = () => {
               feedback.
             </Typography>
             <Typography variant="body2">
-              📧 Email: support@glassdoorclone.com
+              📧 Email: support@jobportal.com
             </Typography>
             <Typography variant="body2">📞 Phone: +1 (123) 456-7890</Typography>
             <Typography variant="body2" sx={{ marginTop: 2 }}>

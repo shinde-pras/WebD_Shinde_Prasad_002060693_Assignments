@@ -23,20 +23,20 @@ const AboutPage = () => {
               About Us
             </Typography>
             <Typography variant="body1" paragraph>
-              Glassdoor is one of the world's largest job and recruiting sites.
+              Job Portal is one of the world's largest job and recruiting sites.
               We strive to help people everywhere find jobs and companies they
               love.
             </Typography>
             <Typography variant="body1" paragraph>
               Our mission is to help people everywhere find a job and company
               they love. In pursuit of this mission, we strive to ensure that
-              every employee at Glassdoor has the resources and support they
+              every employee at Job Portal has the resources and support they
               need to thrive.
             </Typography>
             <Typography variant="body1" paragraph>
-              For employers, Glassdoor offers effective recruiting and employer
-              branding solutions via our Glassdoor for Employers products.
-              Glassdoor also helps employers create a more transparent and
+              For employers, Job Portal offers effective recruiting and employer
+              branding solutions via our Job Portal for Employers products.
+              Job Portal also helps employers create a more transparent and
               engaging workplace culture through our proprietary data, powerful
               analytics, and employer branding tools.
             </Typography>

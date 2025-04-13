@@ -1,11 +1,11 @@
-import { blueGrey, orange, lightBlue, green, pink } from '@mui/material/colors';
+import { blueGrey, orange, lightBlue, green } from '@mui/material/colors';
 
 export const themeColors = (mode) => ({
   palette: {
     mode,
     ...(mode === 'light'
       ? {
-          // palette values for light mode
+          // Light mode palette
           primary: {
             main: blueGrey[700], // Blue Grey shade
           },
@@ -16,12 +16,13 @@ export const themeColors = (mode) => ({
             default: '#f5f5f5', // Light background
           },
           text: {
-            primary: '#333333', // Readable dark text color
-            secondary: '#616161', // Readable secondary text color
+            primary: '#000000', // Black text color for better readability
+            secondary: '#424242', // Dark grey secondary text color
           },
+          cardBackground: '#ffffff', // Custom card background for light mode
         }
       : {
-          // palette values for dark mode
+          // Dark mode palette
           primary: {
             main: green[700], // Green shade
           },
@@ -29,12 +30,13 @@ export const themeColors = (mode) => ({
             main: orange[500], // Orange shade
           },
           background: {
-            default: '#212121', // Dark background
+            default: '#121212', // Darker background for better contrast
           },
           text: {
-            primary: '#ffffff', // White text color
-            secondary: '#e0e0e0', // Light grey text color
+            primary: '#ffffff', // White text color for dark mode
+            secondary: '#bdbdbd', // Light grey secondary text color
           },
+          cardBackground: '#333333', // Custom card background for dark mode
         }),
   },
 });

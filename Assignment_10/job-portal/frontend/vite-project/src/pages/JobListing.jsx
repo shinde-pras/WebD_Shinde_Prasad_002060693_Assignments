@@ -7,12 +7,14 @@ import {
   Grid,
   Container,
   Box,
+  CircularProgress,
 } from "@mui/material";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const JobListing = () => {
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -21,6 +23,8 @@ const JobListing = () => {
         setJobs(response.data);
       } catch (error) {
         console.error("Error fetching jobs:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -28,19 +32,28 @@ const JobListing = () => {
   }, []);
 
   return (
-    <Box sx={{ backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
+    <Box sx={{ backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
       <Header />
-      <Container maxWidth="md" sx={{ py: 6 }}>
+
+      <Container maxWidth="md" sx={{ py: 8 }}>
         <Typography
           variant="h4"
           align="center"
           gutterBottom
-          sx={{ color: "#2e7d32", fontWeight: "bold" }}
+          sx={{
+            fontWeight: "bold",
+            color: "#2e7d32",
+            mb: 5,
+          }}
         >
           Available Job Openings
         </Typography>
 
-        {jobs.length === 0 ? (
+        {loading ? (
+          <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
+            <CircularProgress />
+          </Box>
+        ) : jobs.length === 0 ? (
           <Typography
             align="center"
             sx={{ mt: 6, color: "text.secondary", fontSize: "1.1rem" }}
@@ -48,7 +61,7 @@ const JobListing = () => {
             No jobs available.
           </Typography>
         ) : (
-          <Grid container spacing={4} sx={{ mt: 3 }}>
+          <Grid container spacing={4}>
             {jobs.map((job, index) => (
               <Grid item xs={12} sm={6} key={index}>
                 <Card
@@ -83,7 +96,11 @@ const JobListing = () => {
                       {job.description}
                     </Typography>
                     <Typography variant="body2" fontWeight="bold">
-                      Salary: ₹{job.salary}
+                      Salary:{" "}
+                      {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      }).format(job.salary)}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -92,6 +109,7 @@ const JobListing = () => {
           </Grid>
         )}
       </Container>
+
       <Footer />
     </Box>
   );

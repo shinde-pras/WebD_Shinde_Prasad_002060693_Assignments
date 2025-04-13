@@ -32,6 +32,37 @@ exports.createUser = async (req, res, next) => {
   }
 };
 
+// POST /signup
+exports.signupUser = async (req, res, next) => {
+  try {
+    const { fullName, email, password, type } = req.body;
+
+    if (!fullName || !email || !password || !type) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+      fullName,
+      email,
+      password: hashedPassword,
+      type,
+    });
+
+    await newUser.save();
+
+    res.status(201).json({ message: "User registered successfully", user: newUser });
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.editUser = async (req, res, next) => {
   try {
     const { fullName, password } = req.body;
@@ -105,7 +136,6 @@ exports.loginUser = async (req, res, next) => {
       expiresIn: "1h",
     });
 
-    // 🔥 Send both token and user info
     res.json({
       token,
       user: {
@@ -113,6 +143,7 @@ exports.loginUser = async (req, res, next) => {
         type: user.type,
       },
     });
+    
   } catch (error) {
     next(error);
   }

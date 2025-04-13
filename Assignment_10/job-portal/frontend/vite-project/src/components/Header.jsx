@@ -1,9 +1,17 @@
-// components/Header.jsx
-import React from "react";
-import { AppBar, Tabs, Tab, IconButton } from "@mui/material";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import { green } from "@mui/material/colors";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../actions/userActions";
 
 function samePageLinkNavigation(event) {
   if (
@@ -41,9 +49,11 @@ function LinkTab(props) {
   );
 }
 
-
 const Header = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (event, newValue) => {
     if (
@@ -53,6 +63,22 @@ const Header = () => {
       setValue(newValue);
     }
   };
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch(loginSuccess({ email: "", type: "", token: "" }));
+    handleMenuClose();
+    navigate("/login");
+  };
+
   return (
     <div style={{ position: "relative" }}>
       <AppBar position="static">
@@ -84,11 +110,12 @@ const Header = () => {
         >
           <Tab label="Home" component={Link} to="/home" />
           <Tab label="About" component={Link} to="/about" />
-
           <Tab label="Jobs" component={Link} to="/jobs" />
           <Tab label="Companies" component={Link} to="/companies" />
         </Tabs>
+
         <IconButton
+          onClick={handleMenuOpen}
           style={{
             position: "absolute",
             top: 0,
@@ -96,15 +123,20 @@ const Header = () => {
             zIndex: 1,
             color: "black",
           }}
-          component={Link}
-          to="/login"
         >
           <AccountCircleIcon />
         </IconButton>
+
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleMenuClose}
+        >
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        </Menu>
       </AppBar>
     </div>
   );
 };
 
-console.log(Header);
 export default Header;

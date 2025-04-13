@@ -18,7 +18,7 @@ const Logout = () => {
         variant="contained"
         color="primary"
         style={{
-          backgroundColor: "#0CAA41", // Green color similar to Glassdoor theme
+          backgroundColor: "#0CAA41",
           color: "#fff", // White text color
           padding: "10px 20px", // Padding around the text
           borderRadius: "4px", // Rounded corners

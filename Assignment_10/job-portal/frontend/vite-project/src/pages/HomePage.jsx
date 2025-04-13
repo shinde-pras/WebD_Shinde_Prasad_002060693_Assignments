@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Paper, Typography, Grid, RadioGroup, Radio, FormControlLabel } from "@mui/material";
 import Footer from "../components/Footer";
 import SearchBar from "../components/Search";
 import FeaturedJobs from "../components/FeaturedJobs";
@@ -6,43 +7,72 @@ import CategoryComponent from "../components/Category";
 import ImageWithTextOverlay from "../components/ImageContainer";
 import JobDescription from "../components/JobDescription";
 import Header from "../components/Header";
-import { Grid } from "@mui/material";
 
 const Home = () => {
   return (
-    <div style={{ backgroundColor: "#fff" }}>
+    <Box sx={{ backgroundColor: "#fdfdfd", minHeight: "100vh" }}>
       <Header />
-      <div
-        className="home-content"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "40px 0",
+
+      {/* Hero Section */}
+      <Box
+        sx={{
+          width: "100%",
+          backgroundColor: "#e8f5e9",
+          py: { xs: 6, md: 8 },
+          textAlign: "center",
+          mt: 4,
         }}
       >
-        <h1 style={{ marginBottom: "20px", fontSize: "2.5rem", color: "#1b5e20" }}>
-          Welcome to Glassdoor
-        </h1>
-
-        {/* Search Bar Centered */}
-        <div style={{ width: "50%", marginBottom: "40px" }}>
-          <SearchBar />
-        </div>
-
-        {/* Full-width Image Banner with Overlay */}
-        <div style={{ width: "100%", marginBottom: "40px" }}>
-          <ImageWithTextOverlay />
-        </div>
-
-        {/* Featured Jobs and Description */}
-        <Grid
-          container
-          spacing={4}
-          justifyContent="center"
-          alignItems="flex-start"
-          style={{ width: "90%", margin: "0 auto" }}
+        <Typography
+          variant="h3"
+          fontWeight="bold"
+          color="primary"
+          sx={{ mb: 2 }}
         >
+          Welcome to Job Portal
+        </Typography>
+      </Box>
+
+      {/* Search + Purpose Section */}
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 6 }}>
+        <Paper
+          elevation={4}
+          sx={{
+            p: 4,
+            width: "90%",
+            maxWidth: 800,
+            borderRadius: 3,
+            backgroundColor: "white",
+          }}
+        >
+          <Typography
+            variant="h5"
+            gutterBottom
+            sx={{ color: "#388e3c", fontWeight: "bold", mb: 2 }}
+          >
+            Find Your Opportunity
+          </Typography>
+
+          <Box sx={{ mb: 3 }}>
+            <SearchBar />
+          </Box>
+
+          <Box>
+            <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
+              What brings you here today?
+            </Typography>
+            <RadioGroup defaultValue="browsing">
+              <FormControlLabel value="job" control={<Radio />} label="Looking for a job right now" />
+              <FormControlLabel value="hire" control={<Radio />} label="Looking for employee" />
+              <FormControlLabel value="browsing" control={<Radio />} label="I am just browsing" />
+            </RadioGroup>
+          </Box>
+        </Paper>
+      </Box>
+
+      {/* Featured Jobs & Description */}
+      <Box sx={{ mt: 6, px: { xs: 2, md: 8 } }}>
+        <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <FeaturedJobs />
           </Grid>
@@ -50,19 +80,18 @@ const Home = () => {
             <JobDescription />
           </Grid>
         </Grid>
+      </Box>
 
+      {/* Categories */}
+      <Box sx={{ mt: 8, px: { xs: 2, md: 8 } }}>
+        <CategoryComponent />
+      </Box>
 
-        {/* Categories Section */}
-        <div style={{ width: "90%", marginTop: "60px" }}>
-          <CategoryComponent />
-        </div>
-
-        {/* Footer */}
-        <div style={{ marginTop: "60px", width: "100%" }}>
-          <Footer />
-        </div>
-      </div>
-    </div>
+      {/* Footer */}
+      <Box sx={{ mt: 6 }}>
+        <Footer />
+      </Box>
+    </Box>
   );
 };
 
